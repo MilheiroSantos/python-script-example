@@ -23,7 +23,7 @@ for line in lines:
 
     delta = datetime.now() - datetime.fromisoformat(created_at)
     if delta > timedelta(days=14):
-        print(f"deleting container {parsed['Repository']}:{parsed['Tag']}")
+        print(f"deleting docker image {parsed['Repository']}:{parsed['Tag']}")
         docker_remove = subprocess.run(
             [f"docker image rm --force {parsed['ID']}"],
             shell=True, capture_output=True)

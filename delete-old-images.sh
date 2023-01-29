@@ -12,14 +12,15 @@ do
     | awk 'BEGIN { OFS = "T" } { print $1, $2 }' \
     | date -f - +%s)
   now_epoch=$(date +%s)
-  delta=$((now_epoch-created_epoch))
+  delta=$((now_epoch - created_epoch))
 
-  if [ $delta -gt 1209600 ]; then #14 days
+  if [ $delta -gt 1209600 ]; then # 14 days
     repository=$(echo "$line" | jq --raw-output '.Repository')
     tag=$(echo "$line" | jq --raw-output '.Tag')
     id=$(echo "$line" | jq --raw-output '.ID')
 
-    echo "deleting repository ${repository}:${tag}"
-    docker image rm --force "$id" || True # An error in the removal should not stop the loop
+    echo "deleting image ${repository}:${tag}"
+    # An error in the removal should not stop the loop
+    docker image rm --force "$id" || true
   fi
 done

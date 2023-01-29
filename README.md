@@ -1,23 +1,30 @@
-# python-script-example
+# Python script example
 
-Small example on how to use python to replace bash scripts
-These two scripts delete all images that were created (not downloaded) more than 2 weeks ago.
-They are functionally similar, except that one was written in bash, and the other in python3.
+Small example on how to use python to replace bash scripts as part of the blog post [Life is too short to learn Bash](https://unicoeding.com/blog/life-is-too-short-to-learn-bash/).
 
-To run them, first, ensure the script is executable (for UNIX machines), with:
+These scripts delete all images that were created (not downloaded) more than 2 weeks ago.
+They are functionally similar, except that one was written in bash, and the others in python3.
+
+To run the python script:
 ```shell
-chmod +x delete-old-images.*
+chmod +x delete-old-images.py
+./delete-old-images.py 
 ```
 
-And then simply execute the file
+To run the bash script:
 ```shell
-./delete-old-images.py # or ./delete-old-images.sh
+./delete-old-images.sh
+chmod +x delete-old-images.sh
 ```
 
-These scripts were tested in bash 5.2.2, python 3.10.7, and docker 20.10.16.
+To run the python program, first ensure the python dependencies are installed.
+I recommend by doing it inside virtual environment:
+```shell
+python3 -m venv venv && source ./venv/bin/activate && pip install -r requirements.txt
+```
+Then run the program with
+```shell
+python delete-old-images-program.py
+```
 
-//TODO
-For more information, visit unicoeding.com/blog/ 
-
-
-
+Tested in Bash 5.2.2, Python 3.10.7, and Docker 20.10.16.
